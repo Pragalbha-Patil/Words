@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words</title>
+</head>
+<body>
+    <p id="random"></p>
+    <script>
+        var lines = ''
+        function fetchWords() {
+            fetch('hard_words.txt')
+            .then(response => response.text())
+            .then(
+                text => {
+                    lines = text.split('\n');
+                    var r = Math.floor(Math.random() * lines.length);
+                    var line = lines[r];
+                    document = document.getElementById('random')
+                    document.write(line);
+                }
+            )
+        }
+        fetchWords();
+    </script>
+</body>
+</html>
