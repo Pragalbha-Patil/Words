@@ -234,8 +234,7 @@ serendipity n. accidental good fortune, discovering good things without looking 
 skinflint n. a mean, penny-pinching person
 smidgen n. a very small amount
 somber adj. depressing, dismal, gloomy
-specious adj. deceptively plausible or attractive; misleading; like an answer choice Joe
-Bloggs would fall for.
+specious adj. deceptively plausible or attractive; misleading; like an answer choice Joe Bloggs would fall for.
 stand n. a group of trees
 sublime adj. of great intellectual, moral, or spiritual value
 subsidy n. a gift of money
