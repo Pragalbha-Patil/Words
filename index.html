@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
     <title>Random Vocabulary Words</title>
     <style>
+        html, body {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
         .entire-webpage {
             font-size: 150%;
             zoom: 2;
@@ -37,7 +43,7 @@
                     var params = location.search.split('words=')[1]
                     if (params) {
                     	const multiple = fetchMultipleWords(params, r, lines)
-                        document.write(multiple.join('<br />'));
+                        document.write(multiple.join(''));
                     } else {
                         document.write(finalWord);
                     }
@@ -48,7 +54,7 @@
 
         function formatWords(line) {
             let firstWord = line.split(' ')
-            finalWord = `<strong>${firstWord[0]}</strong> ${firstWord.slice(1,).join(' ')}`;
+            finalWord = `<p style="font-family: 'Source Sans Pro', sans-serif;"><strong>${firstWord[0]}</strong> ${firstWord.slice(1,).join(' ')}</p>`;
             return finalWord;
         }
 
