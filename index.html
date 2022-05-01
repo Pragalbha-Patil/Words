@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Words</title>
+    <title>Random Vocabulary Words</title>
+    <style>
+        .entire-webpage {
+            font-size: 150%;
+            zoom: 2;
+            -moz-transform: scale(2);/* Firefox Property */
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(2);/* Opera Property */
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(2);/* Safari Property */
+            -webkit-transform-origin: 0 0;
+            transform: scale(2); /* Standard Property */
+            transform-origin: 0 0;  /* Standard Property */
+        }
+    </style>
 </head>
-<body>
+<body class="entire-webpage">
     <p id="random"></p>
     <script>
         var lines = ''
@@ -18,12 +32,38 @@
                     lines = text.split('\n');
                     var r = Math.floor(Math.random() * lines.length);
                     var line = lines[r];
-                    document = document.getElementById('random')
-                    document.write(line);
+                    document = document.getElementById('random');
+                    finalWord = formatWords(line);
+                    var params = location.search.split('words=')[1]
+                    if (params) {
+                    	const multiple = fetchMultipleWords(params, r, lines)
+                        document.write(multiple.join('<br />'));
+                    } else {
+                        document.write(finalWord);
+                    }
                 }
             )
         }
         fetchWords();
+
+        function formatWords(line) {
+            let firstWord = line.split(' ')
+            finalWord = `<strong>${firstWord[0]}</strong> ${firstWord.slice(1,).join(' ')}`;
+            return finalWord;
+        }
+
+        function fetchMultipleWords(params, r, lines) {
+            let n = lines.length
+            var multiple = [];
+            words = parseInt(params) || 20
+            console.log(`Requested Words: ${words}`);
+            if (words >= n) words = n;
+            for(let i = r + 1; i <= r + words; i++) {
+                let finalWord = formatWords(lines[i])
+                multiple.push(finalWord);
+            }
+            return multiple;
+        }
     </script>
 </body>
 </html>
